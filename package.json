@@ -1,0 +1,38 @@
+{
+  "name": "shop-online",
+  "version": "1.0.0",
+  "description": "shop online",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "shop",
+    "toko",
+    "bisnis",
+    "penjualan",
+    "dagang"
+  ],
+  "author": "wirawan mahardika",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-mysql-session": "^3.0.0",
+    "express-rate-limit": "^6.7.0",
+    "express-session": "^1.17.3",
+    "helmet": "^7.0.0",
+    "jsonwebtoken": "^9.0.0",
+    "mysql2": "^3.3.3",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "sequelize": "^6.31.1",
+    "zxcvbn": "^4.4.2"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3",
+    "nodemon": "^2.0.22"
+  }
+}
