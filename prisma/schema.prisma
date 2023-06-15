@@ -19,11 +19,11 @@ model Users {
   id_user String @id @default(uuid())
   fullname String? @db.VarChar(100)
   email String @db.VarChar(100) @unique
-  phone String @unique
+  // phone String @unique
   username String @db.VarChar(31) @unique
   role Role
   password String @db.VarChar(100)
-  photo_profile Bytes @db.LongBlob
+  photo_profile Bytes? @db.LongBlob
 
   @@map("users")
 }

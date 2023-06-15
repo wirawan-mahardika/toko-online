@@ -3,14 +3,12 @@ CREATE TABLE `users` (
     `id_user` VARCHAR(191) NOT NULL,
     `fullname` VARCHAR(100) NULL,
     `email` VARCHAR(100) NOT NULL,
-    `phone` VARCHAR(191) NOT NULL,
     `username` VARCHAR(31) NOT NULL,
     `role` ENUM('ADMIN', 'CUSTOMER') NOT NULL,
     `password` VARCHAR(100) NOT NULL,
-    `photo_profile` LONGBLOB NOT NULL,
+    `photo_profile` LONGBLOB NULL,
 
     UNIQUE INDEX `users_email_key`(`email`),
-    UNIQUE INDEX `users_phone_key`(`phone`),
     UNIQUE INDEX `users_username_key`(`username`),
     PRIMARY KEY (`id_user`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

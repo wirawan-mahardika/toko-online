@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="w-full h-screen flex flex-col items-center justify-center gap-y-8">
+        <div class="w-1/5">
+            <div class="border p-10 rounded-full border-black w-[200px] mx-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#00ff00" className="w-6 h-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+            </div>
+        </div>
+        <p>Berhasil signup dengan username<span class="text-red-600 font-semibold"> <%= data.username %></span>, Redirect to <a href="<%= client_url %>" class="text-blue-600 font-bold">Home page</a></p>
+    </div>
+</body>
+</html>
