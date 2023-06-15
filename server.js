@@ -1,12 +1,10 @@
 import app from "./src/app.js";
-import db from "./src/database/db.js";
-import Users from './src/database/models/Users-model.js'
+import { prismaClient } from "./src/database/prisma-client.js";
 
 try {
-    await db.authenticate()
-    await Users.sync({force: true})
+  await prismaClient.$connect();
 } catch (error) {
-    console.log(error)
+  console.log(error);
 }
 
 const PORT = process.env.PORT

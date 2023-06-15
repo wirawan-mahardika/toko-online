@@ -1,0 +1,90 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  CUSTOMER
+}
+
+model Users {
+  id_user String @id @default(uuid())
+  fullname String? @db.VarChar(100)
+  email String @db.VarChar(100) @unique
+  phone String @unique
+  username String @db.VarChar(31) @unique
+  role Role
+  password String @db.VarChar(100)
+  photo_profile Bytes @db.LongBlob
+
+  @@map("users")
+}
+
+model Barang {
+  id_barang String @id @db.Char(6)
+  id_kategori Int
+  id_brand Int 
+  nm_brg String @db.VarChar(100)
+  tipe String
+  slogan String
+  likes Int
+  rating Int @db.TinyInt
+  description String @db.Text
+
+  kategori Kategori @relation(fields: [id_kategori], references: [id_kategori], map: "barang_to_kategori_fk")
+  brand Brand @relation(fields: [id_brand], references: [id_brand], map: "barang_to_brand_fk")
+  detailBarang detail_barang[]
+
+  @@map("barang")
+}
+
+model Brand {
+  id_brand Int @id @default(autoincrement())
+  nm_brand String @unique @db.VarChar(25)
+
+  barang Barang[]
+  @@map("brand")
+}
+
+model Kategori {
+  id_kategori Int @id @default(autoincrement())
+  nm_kategori String @unique @db.VarChar(25)
+
+  barang Barang[]
+  @@map("kategori")
+}
+
+model detail_barang {
+  id_detail_barang Int @id @default(autoincrement())
+  id_barang String @db.Char(6)
+  harga Int @db.UnsignedInt
+  stok Int @db.UnsignedSmallInt
+  photo Bytes @db.MediumBlob
+  color String @db.VarChar(100)
+  
+  barang Barang @relation(fields: [id_barang], references: [id_barang], map: "detailBarang_to_barang_fk")
+  @@map("detail_barang")
+}
+
+// model Order_detail {
+//   id Int @id @default(autoincrement())
+//   id_barang String @db.Char(6)
+//   id_penjualan Int
+//   jml_barang Int
+//   sub_total_harga Int
+// }
+
+// model penjualan {
+//   id Int @id
+//   id_user String @db.Char(36)
+//   total_harga Int
+//   tanggal DateTime
+// }
