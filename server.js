@@ -1,11 +1,11 @@
-import app from "./src/app.js";
-import { prismaClient } from "./src/database/prisma-client.js";
+import app from './src/app.js'
+import { prismaClient } from './src/database/prisma-client.js'
 
 try {
-  await prismaClient.$connect();
+    await prismaClient.$connect()
 } catch (error) {
-  console.log(error);
+    console.log(error)
 }
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 8080
 app.listen(PORT, () => console.log('server is listening at port', PORT))
